@@ -1,0 +1,52 @@
+<app-adminnav></app-adminnav>
+<div class="containermain">
+    <h2>Training Requested</h2>
+    <hr>
+    <input type="text" placeholder="Search by Training Name" [(ngModel)]="searchTerm" (input)="filterRequests()" />
+    <select [(ngModel)]="statusFilter" (change)="filterRequests()">
+      <option value="">All Statuses</option>
+      <option value="pending">Pending</option>
+      <option value="approved">Approved</option>
+      <option value="rejected">Rejected</option>
+    </select>
+    
+    <table class="table table-bordered" *ngIf="filteredRequests.length > 0; else noData">
+      <thead>
+        <tr>
+          <th>Training Name</th>
+          <th>User</th>
+          <th>Status</th>
+          <th class="actions-column">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of filteredRequests">
+          <td>{{ trainingNames[request.physicalTrainingId] }}</td>
+          <td>{{ getUserDetails(request.userId)?.username }}</td>
+          <td>{{ request.status }}</td>
+          <td class="actions-column">
+            <div class="qwe">
+              <button class="btn btn-primary btn-fixed-height" (click)="approveRequest(request)">Approve</button>
+              <button class="btn btn-danger btn-fixed-height" (click)="rejectRequest(request)">Reject</button>
+              <button class="btn btn-secondary btn-fixed-height" (click)="onShowModal(request.userId)">Show Profile</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noData>
+      <p>Oops! No records found</p>
+    </ng-template>
+
+    <!-- Modal for user profile -->
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h3>User Profile</h3>
+        <p><strong>Username:</strong> {{ selectedUser?.username }}</p>
+        <p><strong>Email:</strong> {{ selectedUser?.email }}</p>
+        <p><strong>Mobile Number:</strong> {{ selectedUser?.mobileNumber }}</p>
+        
+      </div>
+    </div>
+</div>

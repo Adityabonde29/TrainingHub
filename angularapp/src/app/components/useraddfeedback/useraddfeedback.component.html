@@ -1,0 +1,28 @@
+<app-usernav></app-usernav>
+<div class="main">
+  <h2>Add Feedback</h2>
+  <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+    <div class="form-group">
+      <label for="feedback">Feedback<span style="color: red;">*</span></label>
+      <textarea id="feedback" class="form-control" required [(ngModel)]="feedbackText" name="feedback" #feedback="ngModel"></textarea>
+      <div *ngIf="feedback.invalid && feedback.touched" class="text-danger">Feedback is required.</div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Submit</button>
+  </form>
+
+  <!-- Popup Modal -->
+  <div *ngIf="showSuccessMessage" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Success</h4>
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Successfully Added!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="closeModal()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

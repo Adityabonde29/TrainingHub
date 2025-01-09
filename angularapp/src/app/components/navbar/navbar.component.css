@@ -1,0 +1,64 @@
+#nav {
+    position: fixed;
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    top: 0;
+    padding: 2vw 3vw;
+    width: 100vw;
+    font-family: neu;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navright {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1.5vw;
+}
+
+#nav h2 a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.800);
+}
+
+#navright h4 {
+    /* padding: 0.65vw 1.3vw; */
+    padding: 1vw 2vw;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    border-radius: 3.25vw;
+    position: relative;
+    overflow: hidden;
+}
+
+#navright h4::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    left: 0;
+    bottom: -100%;
+    border-radius: 50%;
+    transition: all ease 0.5s;
+}
+
+#navright h4:hover::after {
+    bottom: 0;
+    border-radius: 0;
+}
+
+#navright h4 a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.700);
+    font-weight: 500;
+    font-size: 2.4vh;
+    position: relative;
+    z-index: 9;
+}
+
+#navright h4:hover a {
+    color: #EFEAE3;
+}

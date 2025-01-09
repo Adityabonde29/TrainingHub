@@ -1,0 +1,18 @@
+<div id="nav">
+    <h2><a target="_blank" href="">Training Hub</a></h2>
+    <div id="navcenter">
+        <h4><a routerLink="/userProfile" >{{User}}/User</a></h4>
+        <h4><a routerLink="/home" >Home</a></h4>
+        <h4><a routerLink="/Userviewtraining" >Trainings</a></h4>
+        <h4><a routerLink="/Userviewappliedrequest" >Applied Training</a></h4>
+        <select (change)="redirecttopage($event.target.value)">
+            <option value="" disabled selected hidden>Feedback</option>
+            <option value="1">Post Feedback</option>
+            <option value="2">View Feedback</option>
+        </select>
+        
+    </div>
+    <div id="navright">
+        <h4><a (click)="logout()">Logout</a></h4>
+    </div>
+</div>

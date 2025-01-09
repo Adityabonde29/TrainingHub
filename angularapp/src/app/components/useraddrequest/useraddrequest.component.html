@@ -1,0 +1,33 @@
+<app-usernav></app-usernav>
+
+<div class="container">
+  <button type="button" class="close" (click)="goBack()">&times;</button>
+  <h2>Training Request Form</h2>
+  <hr>
+  <form [formGroup]="requestForm" (ngSubmit)="submit()">
+    <div>
+      <label for="healthCondition">Health Condition<span style="color: red">*</span>:</label>
+      <input type="text" id="healthCondition" formControlName="healthCondition">
+      <div *ngIf="isFieldInvalid('healthCondition')" class="error" style="color: red">
+        Health Condition is required.
+      </div>
+    </div>
+    <div>
+      <label for="fitnessGoals">Fitness Goals<span style="color: red">*</span>:</label>
+      <input type="text" id="fitnessGoals" formControlName="fitnessGoals">
+      <div *ngIf="isFieldInvalid('fitnessGoals')" class="error" style="color: red">
+        Fitness Goals are required.
+      </div>
+    </div>
+    <div>
+      <label for="comments">Comments:</label>
+      <textarea id="comments" formControlName="comments"></textarea>
+    </div>
+    <div *ngIf="formSubmitted && requestForm.invalid" class="error">
+      All fields except comments are required.
+    </div>
+    <div class="qwe">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

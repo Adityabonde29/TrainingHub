@@ -1,0 +1,129 @@
+@font-face {
+    font-family: neu;
+    src: url(/assets/Fonts/NeueHaasDisplayMediu.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: neu;
+    font-weight: 100;
+    src: url(/assets/Fonts/NeueHaasDisplayLight.ttf) format('truetype');
+}
+
+#nav {
+    position: fixed;
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    top: 0;
+    padding: 2vw 3vw;
+    width: 100vw;
+    font-family: neu;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navright {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1.5vw;
+}
+
+#navcenter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1.2vw;
+    margin-left: 6vw;
+}
+
+#navcenter h4 {
+    padding: 1vw 2vw;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    border-radius: 3.25vw;
+}
+
+#navcenter h4:hover{
+    border: 1px solid rgba(0, 0, 0, 0.900);
+}
+
+#navcenter h4 a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.700);
+    font-weight: 500;
+    font-size: 2.4vh;
+    z-index: 9;
+    cursor: pointer;
+}
+
+#nav h2 a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.700);
+}
+
+#navright h4 {
+    padding: 1vw 2vw;
+    border-radius: 3.25vw;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.500);
+}
+
+#navright h4::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    left: 0;
+    bottom: -100%;
+    border-radius: 50%;
+    transition: all ease 0.5s;
+}
+
+#navright h4:hover::after {
+    bottom: 0;
+    border-radius: 0;
+}
+
+#navright h4 a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.700);
+    font-weight: 500;
+    font-size: 2.4vh;
+    position: relative;
+    z-index: 9;
+    cursor: pointer;
+}
+
+#navright h4:hover a {
+    color: #EFEAE3;
+}
+
+#navcenter select {
+    background-color: rgba(255, 255, 255, 0.001);
+    appearance: none;
+    padding: 1.15vw 2vw;
+    color: rgba(0, 0, 0, 0.700);
+    border: 1px solid rgba(0, 0, 0, 0.500);
+    text-align-last: center;
+    border-radius: 3.25vw;
+    font-family: neu;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#navcenter select:hover{
+    border: 1px solid rgba(0, 0, 0, 0.900);
+}
+
+#navcenter select option {
+    color: rgba(0, 0, 0, 0.700);
+    font-weight: 500;
+    font-size: 2.4vh;
+    font-family: neu;
+    text-align: center;
+}

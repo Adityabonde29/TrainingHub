@@ -1,0 +1,38 @@
+<app-adminnav></app-adminnav>
+<div class="container">
+    <h2>Feedback Details</h2>
+    <hr>
+    <table class="table table-bordered" *ngIf="feedbacks.length > 0; else noData">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>User</th>
+          <th>Feedback</th>
+          <th>Date</th>
+          <th class="actions-column">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feedback of feedbacks, let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ getUserDetails(feedback.userId)?.username }}</td>
+          <td>{{ feedback.feedbackText }}</td>
+          <td>{{ feedback.date | date }}</td>
+          <td class="actions-column"><button id="edit-button" class="btn btn-primary" (click)="onShowModal(feedback.userId)">Show Profile</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noData>
+      <p>Oops! No feedbacks found</p>
+    </ng-template>
+ 
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <h3>User Profile</h3>
+        <p><strong>Username:</strong> {{ selectedUser.username }}</p>
+        <p><strong>Email:</strong> {{ selectedUser?.email }}</p>
+        <p><strong>Mobile Number:</strong> {{ selectedUser?.mobileNumber }}</p>
+      </div>
+    </div>
+</div>

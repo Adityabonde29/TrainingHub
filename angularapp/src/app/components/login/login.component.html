@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<app-navbar></app-navbar>
+<div class="main">
+  <div class="container">
+    <h2>Login</h2>
+    <hr>
+    <div *ngIf="errorMessage" style="color: red">{{ errorMessage }}</div>
+    <form [formGroup]="loginForm" (ngSubmit)="handleLogin()" class="form-container">
+      <div>
+        <label>Email<span style="color: red;">*</span>:</label>
+        <input type="text" formControlName="Email" />
+        <div *ngIf="loginForm.controls['Email'].invalid && loginForm.controls['Email'].touched">
+          Invalid email format
+        </div>
+      </div>
+      <div class="pass">
+        <label>Password<span style="color: red;">*</span>:</label>
+        <input [type]="passwordFieldType" formControlName="Password" />
+        <span class="toggle-password" (click)="togglePasswordVisibility()"> 
+          <i [class]="passwordFieldType === 'password' ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+        </span>
+        <div *ngIf="loginForm.controls['Password'].invalid && loginForm.controls['Password'].touched">
+          Password must be at least 8 characters
+        </div>
+      </div>
+      <button type="submit">Login</button>
+      <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+    </form>
+    <div id="gooey"></div>
+  </div>
+</div>
+
+<div *ngIf="showPopup" class="modal show" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Login Status</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ popupMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closePopup()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="modal show" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="spinner"></div>
+        <p>Logging in, please wait...</p>
+      </div>
+    </div>
+  </div>
+</div>

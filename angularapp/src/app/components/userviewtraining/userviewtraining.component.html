@@ -1,0 +1,47 @@
+<app-usernav></app-usernav>
+ 
+<div class="container">
+  <h2>Available Trainings</h2>
+  <input type="text" [(ngModel)]="searchTerm" (input)="searchTraining()" placeholder="Search by Training Name..." class="form-control mb-3">
+  <table *ngIf="filteredTrainings.length > 0" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>S.No.</th>
+        <th>Training Name</th>
+        <th>Description</th>
+        <th>Trainer Name</th>
+        <th>Location</th>
+        <th>Indoor/Outdoor</th>
+        <th>Fee</th>
+        <th>Focus Area</th>
+        <th>Requirements</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let training of filteredTrainings; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ training.trainingName }}</td>
+        <td>{{ training.description }}</td>
+        <td>{{ training.trainerName }}</td>
+        <td>{{ training.location }}</td>
+        <td>{{ training.isIndoor }}</td>
+        <td>{{ training.fee }}</td>
+        <td>{{ training.focusArea }}</td>
+        <td>{{ training.physicalRequirements }}</td>
+        <td>
+          <div class="qwe">
+            <button
+              (click)="applyForTraining(training.physicalTrainingId)"
+              id="apply-button"
+              class="btn btn-primary"
+              [disabled]="appliedBtn[training.physicalTrainingId]">
+              {{  appliedBtn[training.physicalTrainingId] ? 'Applied' : 'Apply' }}
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 

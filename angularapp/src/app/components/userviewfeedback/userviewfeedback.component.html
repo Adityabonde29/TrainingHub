@@ -1,0 +1,25 @@
+<app-usernav></app-usernav>
+<div class="main">
+  <h2>My Feedback</h2>
+  <div *ngFor="let feedback of feedbacks" class="feed-container">
+    <p>{{ feedback.feedbackText }}</p>
+    <button class="btn btn-danger" (click)="confirmDelete(feedback.feedbackId)">Delete</button>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Confirm Delete</h4>
+      <button type="button" class="close" (click)="closeDeleteModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete this feedback?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="deleteFeedback()">Yes, Delete</button>
+      <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">Cancel</button>
+    </div>
+  </div>
+</div>

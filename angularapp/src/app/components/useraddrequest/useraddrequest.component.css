@@ -1,0 +1,93 @@
+.container {
+  background-color: white; /* White background for the form container */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%; /* Adjust width to fit within the viewport */
+  width: 400px;
+  height: auto; /* Adjust height to fit content */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for the form container */
+  margin: 20vh auto; /* Center the container */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  position: relative; /* Ensure the close button is positioned correctly */
+}
+
+h2 {
+  margin-top: 10px;
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #FE380C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b02202;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 20px 0;
+}
+
+div *ngIf {
+  color: red;
+  margin-bottom: 10px;
+}
+
+p {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.qwe {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.close {
+  background-color: #FE380C; /* Red background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute; /* Position the close button */
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+}
+
+.close:hover {
+  background-color: #b02202; /* Darker red on hover */
+}

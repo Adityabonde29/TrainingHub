@@ -1,0 +1,49 @@
+<app-usernav></app-usernav>
+<div class="containermain">
+    <h2>User Profile</h2>
+    <div class="profile-detail">
+      <label>User Name:</label>
+      <p>{{ userProfile?.username }}</p>
+    </div>
+    <div class="profile-detail">
+      <label>Email:</label>
+      <p>{{ userProfile?.email }}</p>
+    </div>
+    <div class="profile-detail">
+      <label>Mobile Number:</label>
+      <p>{{ userProfile?.mobileNumber}}</p>
+    </div>
+    <div class="profile-detail">
+      <label>Role:</label>
+      <p>{{ userRole }}</p>
+    </div>
+    <button class="btn btn-primary" (click)="openEditModal()">Edit</button>
+  </div>
+  
+  <div class="modal" *ngIf="isEditModalOpen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Edit Profile</h2>
+        <button class="close" (click)="closeEditModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="profile-detail">
+          <label for="editUsername">User Name:</label>
+          <input id="editUsername" type="text" [(ngModel)]="userProfile.username" name="username" >
+        </div>
+        <div class="profile-detail">
+          <label for="editEmail">Email:</label>
+          <input id="editEmail" disabled type="text" [(ngModel)]="userProfile.email">
+        </div>
+        <div class="profile-detail">
+          <label for="editMobileNumber">Mobile Number:</label>
+          <input id="editMobileNumber" type="text" [(ngModel)]="userProfile.mobileNumber">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+        <button class="btn btn-primary" (click)="saveChanges()">Save</button>
+      </div>
+    </div>
+  </div>
+  

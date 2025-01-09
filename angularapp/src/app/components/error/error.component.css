@@ -1,0 +1,13 @@
+.error-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .error-container h1 {
+    color: red;
+  }
+  
+  .error-container p {
+    color: gray;
+  }
+  

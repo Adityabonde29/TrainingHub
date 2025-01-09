@@ -1,0 +1,59 @@
+<app-adminnav></app-adminnav>
+
+<div class="container">
+  <h2>Training Sessions</h2>
+  <hr>
+  <input type="text" [(ngModel)]="searchTerm" (input)="searchTraining()" placeholder="Search by Training Name..." class="form-control mb-3">
+  <table *ngIf="filteredTrainings.length > 0" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>S.No.</th>
+        <th>Training Name</th>
+        <th>Location</th>
+        <th>Trainer Name</th>
+        <th>Fee</th>
+        <th>Focus Area</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let training of filteredTrainings, let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{ training.trainingName }}</td>
+        <td>{{ training.location }}</td>
+        <td>{{ training.trainerName }}</td>
+        <td>{{ training.fee| currency:'INR' }}</td>
+        <td>{{ training.focusArea }}</td>
+        <td>{{ training.description }}</td>
+        <td>
+          <div class="qwe">
+            <button (click)="editTraining(training.physicalTrainingId)" id="edit-button" class="btn btn-primary">Edit</button>
+            <button (click)="confirmDelete(training.physicalTrainingId)" id="delete-button" class="btn btn-danger">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Delete confirmation modal -->
+  <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showDeleteModal}" *ngIf="showDeleteModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Training</h5>
+          <button type="button" class="close" aria-label="Close" (click)="closeDeleteModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this training?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="deleteTraining()">Yes, Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

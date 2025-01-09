@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<div class="main">
+    <div class="container">
+        <h2>Registration</h2>
+        <hr>
+        <div *ngIf="errorMessage" style="color: red">{{ errorMessage }}</div>
+        <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+            <div>
+                <label>Username<span style="color: red">*</span>:</label>
+                <input type="text" formControlName="Username">
+                <div *ngIf="isFieldInvalid('Username')" style="color: red">Username is required.</div>
+            </div>
+            <div>
+                <label>Email<span style="color: red">*</span>:</label>
+                <input type="text" formControlName="Email">
+                <div *ngIf="isFieldInvalid('Email')" style="color: red">Invalid email format.</div>
+            </div>
+            <div>
+                <label>Password<span style="color: red">*</span>:</label>
+                <input type="password" formControlName="Password">
+                <div *ngIf="isFieldInvalid('Password')" style="color: red">Password must be at least 8 characters and
+                    contain one uppercase letter, one lowercase letter, one number, and one special character.</div>
+            </div>
+            <div>
+                <label>Confirm Password<span style="color: red">*</span>:</label>
+                <input type="password" formControlName="ConfirmPassword">
+                <div *ngIf="isFieldInvalid('ConfirmPassword')" style="color: red">Confirm password must match the
+                    password.</div>
+            </div>
+            <div>
+                <label>Mobile Number<span style="color: red">*</span>:</label>
+                <input type="text" formControlName="MobileNumber">
+                <div *ngIf="isFieldInvalid('MobileNumber')" style="color: red">Mobile number must be exactly 10 digits.
+                </div>
+            </div>
+            <div>
+                <label>Role<span style="color: red">*</span>:</label>
+                <select formControlName="UserRole" (change)="checkRole($event.target.value)">
+                    <option value="">Select a role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                </select>
+                <div *ngIf="isFieldInvalid('UserRole')" style="color: red">User role is required.</div>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="showPopup" class="modal show" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Secret Key Validation</h5>
+                <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>{{ popupMessage }}</p>
+                <input *ngIf="popupMessage === 'Please Enter Secret Key:'" type="text" #secretKeyInput
+                    [(ngModel)]="secretKey" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="validateSecretKey()">Submit</button>
+                <button type="button" class="btn btn-secondary" (click)="closePopup()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showRegisteringModal" class="modal show" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="spinner"></div>
+                <p>Registering, please wait...</p>
+            </div>
+        </div>
+    </div>
+</div>

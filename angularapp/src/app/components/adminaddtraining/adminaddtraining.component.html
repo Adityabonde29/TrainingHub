@@ -1,0 +1,67 @@
+<app-adminnav></app-adminnav>
+<div class="container">
+  <h1>Create New Training</h1>
+  <hr>
+  <form [formGroup]="physicalTrainingForm" (ngSubmit)="addPhysicalTraining()">
+    <div>
+      <label for="TrainingName">Training Name<span style="color: red;">*</span></label>
+ 
+      <input id="TrainingName" type="text" formControlName="TrainingName">
+      <div *ngIf="isFieldInvalid('TrainingName')">Training Name is required.</div>
+    </div>
+ 
+    <div>
+      <label for="Description">Description<span style="color: red;">*</span></label>
+ 
+      <input id="Description" type="text" formControlName="Description">
+      <div *ngIf="isFieldInvalid('Description')">Description is required.</div>
+    </div>
+ 
+    <div>
+      <label for="TrainerName">Trainer Name<span style="color: red;">*</span></label>
+ 
+      <input id="TrainerName" type="text" formControlName="TrainerName">
+      <div *ngIf="isFieldInvalid('TrainerName')">Trainer Name is required.</div>
+    </div>
+ 
+    <div>
+      <label for="Location">Location<span style="color: red;">*</span></label>
+ 
+      <input id="Location" type="text" formControlName="Location">
+      <div *ngIf="isFieldInvalid('Location')">Location is required.</div>
+    </div>
+ 
+    <div>
+      <label for="IsIndoor">Indoor/Outdoor<span style="color: red;">*</span></label>
+      <select id="IsIndoor" formControlName="IsIndoor" [(ngModel)]="isIndoor">
+        <option value="">Select...</option>
+        <option value="true">Indoor</option>
+        <option value="flase">Outdoor</option>
+      </select>
+      <div *ngIf="isFieldInvalid('IsIndoor')">Indoor Training / Outdoor Training selection is required.</div>
+    </div>
+ 
+    <div>
+      <label for="Fee">Fee<span style="color: red;">*</span></label>
+ 
+      <input id="Fee" type="number" formControlName="Fee">
+      <div *ngIf="isFieldInvalid('Fee')">Fee is required and must be a non-negative number.</div>
+    </div>
+ 
+    <div>
+      <label for="FocusArea">Focus Area<span style="color: red;">*</span></label>
+ 
+      <input id="FocusArea" type="text" formControlName="FocusArea">
+      <div *ngIf="isFieldInvalid('FocusArea')">Focus Area is required.</div>
+    </div>
+ 
+    <div>
+      <label for="PhysicalRequirements">Physical Requirements<span style="color: red;">*</span></label>
+ 
+      <input id="PhysicalRequirements" type="text" formControlName="PhysicalRequirements">
+      <div *ngIf="isFieldInvalid('PhysicalRequirements')">Physical Requirements are required.</div>
+    </div>
+ 
+    <button type="submit">Submit Training</button>
+  </form>
+</div>

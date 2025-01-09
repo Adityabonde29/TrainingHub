@@ -1,0 +1,282 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  /* Light grey background for the whole page */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: white;
+  /* White background for the form container */
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  background-color: #007bff;
+  /* Black background for the content container */
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  height: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* Box shadow for the content container */
+}
+
+.main {
+  z-index: 10;
+  position: relative;
+  margin-top: 20vh;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* No box shadow for input fields */
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #FE380C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b02202;
+}
+
+div *ngIf {
+  color: red;
+  margin-bottom: 10px;
+}
+
+p {
+  padding-top: 10px;
+  text-align: center;
+}
+
+#gooey {
+  z-index: -1;
+  height: 32vw;
+  width: 32vw;
+  position: absolute;
+  border-radius: 40%;
+  background-image: linear-gradient(to top right, #FE380C, #fe710c);
+  top: 20%;
+  left: 45%;
+  filter: blur(20px);
+  animation-name: gooey;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 20px 0;
+}
+
+@keyframes gooey {
+  from {
+    transform: translate(10%, -10%) skew(0);
+  }
+
+  to {
+    transform: translate(-10%, -10%) skew(10deg);
+  }
+
+}
+
+.pass {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  left: 90%;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Darken background */
+  z-index: 1050;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  margin: 35vh auto;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.modal-footer .btn {
+  margin-right: 10px; /* Add margin to the right of each button */
+}
+
+.modal-footer .btn:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #FE380C;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #b02202;
+}
+
+.btn-danger {
+  background-color: #FE380C;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #b02202;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.qwe {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 20px 0;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #FE380C;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.close {
+  background-color: #dc3545; /* Red background */
+  color: white; /* White text */
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close:hover {
+  background-color: #c82333; /* Darker red on hover */
+}

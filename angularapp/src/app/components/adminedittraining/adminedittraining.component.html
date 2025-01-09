@@ -1,0 +1,79 @@
+<app-adminnav></app-adminnav>
+<div class="container">
+  <form [formGroup]="physicalTrainingForm" (ngSubmit)="updatePhysicalTraining()">
+    <div class="form-header">
+      <h1>Edit Training</h1>
+      <button type="button" (click)="goBack()" class="close">&times;</button>
+    </div>
+    <hr>
+    <div class="form-group">
+      <label for="trainingName">Training Name <span style="color: red;">*</span></label>
+      <input id="trainingName" formControlName="trainingName" class="form-control">
+      <div *ngIf="isFieldInvalid('trainingName')" class="text-danger">Training Name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description <span style="color: red;">*</span></label>
+      <input id="description" formControlName="description" class="form-control">
+      <div *ngIf="isFieldInvalid('description')" class="text-danger">Description is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="trainerName">Trainer Name <span style="color: red;">*</span></label>
+      <input id="trainerName" formControlName="trainerName" class="form-control">
+      <div *ngIf="isFieldInvalid('trainerName')" class="text-danger">Trainer Name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location <span style="color: red;">*</span></label>
+      <input id="location" formControlName="location" class="form-control">
+      <div *ngIf="isFieldInvalid('location')" class="text-danger">Location is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="isIndoor">Indoor/Outdoor<span style="color: red;">*</span></label>
+      <select id="isIndoor" formControlName="isIndoor" class="form-control">
+        <option value="">Select...</option>
+        <option value="true">Indoor</option>
+        <option value="false">Outdoor</option>
+      </select>
+      <div *ngIf="isFieldInvalid('isIndoor')" class="text-danger">Indoor Training / Outdoor Training selection is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="fee">Fee <span style="color: red;">*</span></label>
+      <input id="fee" type="number" formControlName="fee" class="form-control">
+      <div *ngIf="isFieldInvalid('fee')" class="text-danger">Fee is required and must be a non-negative number.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="focusArea">Focus Area <span style="color: red;">*</span></label>
+      <input id="focusArea" formControlName="focusArea" class="form-control">
+      <div *ngIf="isFieldInvalid('focusArea')" class="text-danger">Focus Area is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="physicalRequirements">Physical Requirements <span style="color: red;">*</span></label>
+      <input id="physicalRequirements" formControlName="physicalRequirements" class="form-control">
+      <div *ngIf="isFieldInvalid('physicalRequirements')" class="text-danger">Physical Requirements are required.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="physicalTrainingForm.invalid">Update Training</button>
+  </form>
+
+  <!-- Success Modal -->
+  <div *ngIf="showSuccessMessage" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Success</h4>
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Training updated successfully!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="closeModal()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
